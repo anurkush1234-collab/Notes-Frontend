@@ -15,7 +15,7 @@ function App() {
       const res = await axios.get(`${API}/notes`);
       setNotes(res.data);
     } catch (error) {
-      console.log(error);
+      console.log("GET error:", error);
     }
   };
 
@@ -48,7 +48,7 @@ function App() {
       setContent("");
       getNotes();
     } catch (error) {
-      console.log(error);
+      console.log("ADD/UPDATE error:", error);
     }
   };
 
@@ -58,7 +58,7 @@ function App() {
       await axios.delete(`${API}/notes/${id}`);
       getNotes();
     } catch (error) {
-      console.log(error);
+      console.log("DELETE error:", error);
     }
   };
 
@@ -71,7 +71,7 @@ function App() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Notes App</h1>
+      <h1>Notes App 🚀</h1>
 
       <input
         type="text"
@@ -80,8 +80,7 @@ function App() {
         onChange={(e) => setTitle(e.target.value)}
       />
 
-      <br />
-      <br />
+      <br /><br />
 
       <textarea
         placeholder="Content"
@@ -89,8 +88,7 @@ function App() {
         onChange={(e) => setContent(e.target.value)}
       />
 
-      <br />
-      <br />
+      <br /><br />
 
       <button onClick={addNote}>
         {editId ? "Update Note" : "Add Note"}
